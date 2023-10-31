@@ -16,6 +16,12 @@
 # and limitations under the License.
 #
 
+#--------------------------------------------------------------------------
+# This file is a part of PyKit project.
+# Created: 31.10.2023
+# Author: Mikhail.Malakhov
+#--------------------------------------------------------------------------
+
 """
 
 Python Kit Library (PyKit)
@@ -23,7 +29,11 @@ Python Kit Library (PyKit)
 The common library for Python projects. It contains useful utilities
 and stuff.
 
+Author: Mikhail.Malakhov
+
 """
+
+from . import semver
 
 PYKIT_NAME = 'pykit'
 PYKIT_TITLE = 'PyKit'
@@ -44,14 +54,14 @@ PYKIT_VERSION_PATCH = 0
 
 """ Gets PyKit library version code. """
 def pykit_version_code():
-    return PYKIT_VERSION_MAJOR * 100000 + PYKIT_VERSION_MINOR * 1000 \
-        + PYKIT_VERSION_PATCH
+    return semver.get_version_code(PYKIT_VERSION_MAJOR, \
+        PYKIT_VERSION_MINOR, PYKIT_VERSION_PATCH)
 # END
 
 """ Gets PyKit library version name. """
 def pykit_version_name():
-    return str(PYKIT_VERSION_MAJOR) + '.' + str(PYKIT_VERSION_MINOR) \
-        + '.' + str(PYKIT_VERSION_PATCH)
+    return semver.get_version_name(PYKIT_VERSION_MAJOR, \
+        PYKIT_VERSION_MINOR, PYKIT_VERSION_PATCH)
 # END
 
 #--------------------------------------------------------------------------

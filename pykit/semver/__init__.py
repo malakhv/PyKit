@@ -17,24 +17,33 @@
 #
 
 #--------------------------------------------------------------------------
-# Script to test PyKit library.
-#
+# This file is a part of PyKit project.
 # Created: 31.10.2023
 # Author: Mikhail.Malakhov
-#
-# This file is a part of PyKit project.
 #--------------------------------------------------------------------------
 
-import pykit
+"""
+
+Python Kit Library (PyKit)
+
+The module to working with version in "Semantic Versioning 2" format.
+
+Author: Mikhail.Malakhov
+
+"""
 
 #--------------------------------------------------------------------------
-# Script entry point
+# Version in "Semantic Versioning 2" format (XX.YY.ZZZ).
 #--------------------------------------------------------------------------
 
-if __name__ == '__main__':
+""" Returns version code. """
+def get_version_code(major = 0, minor = 0, patch = 0):
+    return major * 100000 + minor * 1000 + patch
+# END
 
-    # PyKit version
-    print(pykit.PYKIT_TITLE, 'version:', pykit.pykit_version_name(),
-        '(' + str(pykit.pykit_version_code()) + ')')
+""" Returns version name in "Semantic Versioning 2" format. """
+def get_version_name(major = 0, minor = 0, patch = 0):
+    return str(major) + '.' + str(minor) + '.' + str(patch)
+# END
 
 #--------------------------------------------------------------------------

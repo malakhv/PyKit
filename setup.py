@@ -22,6 +22,8 @@
 #
 # Created: 31.10.2023
 # Author: Mikhail Malakhov
+#
+# This file is a part of PyKit project.
 #--------------------------------------------------------------------------
 
 from setuptools import find_packages, setup
