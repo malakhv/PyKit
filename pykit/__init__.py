@@ -25,8 +25,8 @@ and stuff.
 
 """
 
-PYKIT_NAME = 'pykit';
-PYKIT_TITLE = 'PyKit';
+PYKIT_NAME = 'pykit'
+PYKIT_TITLE = 'PyKit'
 
 #--------------------------------------------------------------------------
 # Library version in "Semantic Versioning 2" format (XX.YY.ZZZ).
@@ -44,14 +44,14 @@ PYKIT_VERSION_PATCH = 0
 
 """ Gets PyKit library version code. """
 def pykit_version_code():
-    return PYKIT_VERSION_MAJOR * 100000 + PYKIT_VERSION_MINOR * 1000
-    + PYKIT_VERSION_PATCH
+    return PYKIT_VERSION_MAJOR * 100000 + PYKIT_VERSION_MINOR * 1000 \
+        + PYKIT_VERSION_PATCH
 # END
 
 """ Gets PyKit library version name. """
 def pykit_version_name():
-    return str(PYKIT_VERSION_MAJOR) + '.' + str(PYKIT_VERSION_MINOR) + '.'
-    + str(PYKIT_VERSION_PATCH)
+    return str(PYKIT_VERSION_MAJOR) + '.' + str(PYKIT_VERSION_MINOR) \
+        + '.' + str(PYKIT_VERSION_PATCH)
 # END
 
 #--------------------------------------------------------------------------

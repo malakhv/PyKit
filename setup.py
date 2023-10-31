@@ -16,16 +16,20 @@
 # and limitations under the License.
 #
 
+#--------------------------------------------------------------------------
+# PyKit library package. To install it, please call:
+#   py -m pip install .
+#
+# Created: 31.10.2023
+# Author: Mikhail Malakhov
+#--------------------------------------------------------------------------
+
 from setuptools import find_packages, setup
 #from . import pykit
 
 def long_description():
     with open("README.md") as file:
         return file.read()
-
-#--------------------------------------------------------------------------
-# Python package
-#--------------------------------------------------------------------------
 
 setup (
 
