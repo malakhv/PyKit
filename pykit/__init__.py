@@ -34,6 +34,8 @@ Author: Mikhail.Malakhov
 """
 
 from . import semver
+from os.path import abspath
+from os import getcwd
 
 PYKIT_NAME = 'pykit'
 PYKIT_TITLE = 'PyKit'
@@ -62,6 +64,15 @@ def pykit_version_code():
 def pykit_version_name():
     return semver.get_version_name(PYKIT_VERSION_MAJOR, \
         PYKIT_VERSION_MINOR, PYKIT_VERSION_PATCH)
+# END
+
+#--------------------------------------------------------------------------
+# Present Working Directory
+#--------------------------------------------------------------------------
+
+""" Returns present working directory. """
+def pwd():
+    return abspath(getcwd())
 # END
 
 #--------------------------------------------------------------------------

@@ -36,5 +36,8 @@ if __name__ == '__main__':
     # PyKit version
     print(pykit.PYKIT_TITLE, 'version:', pykit.pykit_version_name(),
         '(' + str(pykit.pykit_version_code()) + ')')
+    
+    # PWD
+    print(pykit.pwd())
 
 #--------------------------------------------------------------------------
