@@ -17,33 +17,51 @@
 #
 
 #--------------------------------------------------------------------------
-# Script to test PyKit library.
-#
+# This file is a part of PyKit project.
 # Created: 31.10.2023
 # Author: Mikhail.Malakhov
-#
-# This file is a part of PyKit project.
 #--------------------------------------------------------------------------
 
-import pykit
-from pykit import process
+"""
+
+Python Kit Library (PyKit)
+
+The module to working with external processes.
+
+Author: Mikhail.Malakhov
+
+"""
+import subprocess
+from subprocess import CalledProcessError
 
 #--------------------------------------------------------------------------
-# Script entry point
+# Execute external process/command.
 #--------------------------------------------------------------------------
 
-if __name__ == '__main__':
+""" Executes specified process/command with parameters. """
+def exec(proc, *args, shell = True, silent = False,  out_prefix = '', \
+    out_postfix = '', out_keep_empty_lines = False):
 
-    # PyKit version
-    print(pykit.PYKIT_TITLE, 'version:', pykit.pykit_version_name(),
-        '(' + str(pykit.pykit_version_code()) + ')')
+    # Prepare command
+    cmd = [proc]
+    if args : cmd.extend(args)
     
-    # PWD
-    print(pykit.pwd())
+    # Want to use default output?
+    custom_out = (not silent) and out_keep_empty_lines
 
-    # Process
-    print()
-    process.exec('git', 'statu', out_prefix = '-----GIT STATUS -----', \
-        out_postfix = '---------------------', shell=False)
+    # Output prefix?
+    if (not custom_out) and out_prefix: print(out_prefix)
+
+    # Call
+    try:
+        process = subprocess.run(cmd, shell = shell, check = True, \
+            capture_output = custom_out)
+    except CalledProcessError as e:
+        print(e.stderr)
+
+    # Output postfix?
+    if (not custom_out) and out_postfix: print(out_postfix)
+
+# END
 
 #--------------------------------------------------------------------------
