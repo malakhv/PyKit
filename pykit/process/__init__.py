@@ -40,28 +40,49 @@ from subprocess import CalledProcessError
 
 """ Executes specified process/command with parameters. """
 def exec(proc, *args, shell = True, silent = False,  out_prefix = '', \
-    out_postfix = '', out_keep_empty_lines = False):
+    out_postfix = '', out_keep_empty_lines = True):
 
     # Prepare command
     cmd = [proc]
     if args : cmd.extend(args)
-    
+
     # Want to use default output?
-    custom_out = (not silent) and out_keep_empty_lines
+    custom_out = silent or (not out_keep_empty_lines)
 
     # Output prefix?
-    if (not custom_out) and out_prefix: print(out_prefix)
+    if out_prefix:
+        if (not custom_out):
+            print(out_prefix)
+        else:
+            result = out_prefix + '\n'
 
     # Call
     try:
         process = subprocess.run(cmd, shell = shell, check = True, \
-            capture_output = custom_out)
+            capture_output = custom_out, text = custom_out)
     except CalledProcessError as e:
-        print(e.stderr)
+        if (not custom_out):
+            print(e.stderr)
+        else:
+            result = e.stderr
+
+    if (custom_out):
+        result += process.stdout
+
+    if (not out_keep_empty_lines):
+        result = result.replace('\n\n','\n')
 
     # Output postfix?
-    if (not custom_out) and out_postfix: print(out_postfix)
+    if (out_postfix):
+        if (not custom_out):
+            print(out_postfix)
+        else:
+            result += '\n' + out_postfix
 
+    if (custom_out):
+        return result
+    else:
+        return None
 # END
 
 #--------------------------------------------------------------------------

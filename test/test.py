@@ -43,7 +43,9 @@ if __name__ == '__main__':
 
     # Process
     print()
-    process.exec('git', 'statu', out_prefix = '-----GIT STATUS -----', \
-        out_postfix = '---------------------', shell=False)
+    str = process.exec('git', 'status', out_prefix = '-----GIT STATUS -----', \
+        out_postfix = '---------------------', shell=False, \
+            out_keep_empty_lines=True)
+    print(str)
 
 #--------------------------------------------------------------------------
