@@ -27,6 +27,7 @@
 
 import pykit
 from pykit import process
+from pykit import git
 
 #--------------------------------------------------------------------------
 # Script entry point
@@ -43,9 +44,14 @@ if __name__ == '__main__':
 
     # Process
     print()
-    str = process.exec('git', 'status', out_prefix = '-----GIT STATUS -----', \
-        out_postfix = '---------------------', shell=False, \
-            out_keep_empty_lines=True)
-    print(str)
+    #str = process.exec('git', 'status', out_prefix = '-----GIT STATUS -----', \
+    #    out_postfix = '---------------------', shell=False, \
+    #        out_keep_empty_lines=True)
+    #print(str)
+
+    # Git
+    #git.git_status('.')
+    out = git.git_status('.', print_out=False)
+    print(out)
 
 #--------------------------------------------------------------------------
