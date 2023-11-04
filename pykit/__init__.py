@@ -33,9 +33,9 @@ Author: Mikhail.Malakhov
 
 """
 
-from . import semver
-from os.path import abspath
-from os import getcwd
+from . import semver as _sv
+from os.path import abspath as _ap
+from os import getcwd as _cwd
 
 PYKIT_NAME = 'pykit'
 PYKIT_TITLE = 'PyKit'
@@ -52,17 +52,17 @@ PYKIT_VERSION_MAJOR = 0
 PYKIT_VERSION_MINOR = 1
 
 """ The patch (ZZZ) version's part. Available values 0..999. """
-PYKIT_VERSION_PATCH = 0
+PYKIT_VERSION_PATCH = 1
 
 """ Gets PyKit library version code. """
 def pykit_version_code():
-    return semver.get_version_code(PYKIT_VERSION_MAJOR, \
+    return _sv.get_version_code(PYKIT_VERSION_MAJOR, \
         PYKIT_VERSION_MINOR, PYKIT_VERSION_PATCH)
 # END
 
 """ Gets PyKit library version name. """
 def pykit_version_name():
-    return semver.get_version_name(PYKIT_VERSION_MAJOR, \
+    return _sv.get_version_name(PYKIT_VERSION_MAJOR, \
         PYKIT_VERSION_MINOR, PYKIT_VERSION_PATCH)
 # END
 
@@ -72,7 +72,7 @@ def pykit_version_name():
 
 """ Returns present working directory. """
 def pwd():
-    return abspath(getcwd())
+    return _ap(_cwd())
 # END
 
 #--------------------------------------------------------------------------
