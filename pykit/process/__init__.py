@@ -40,7 +40,9 @@ from subprocess import CalledProcessError
 
 """ Executes specified process/command with parameters. """
 def exec(proc, *args, shell = True, silent = False,  out_prefix = '', \
-    out_postfix = '', out_keep_empty_lines = True):
+        out_postfix = '', out_keep_empty_lines = True):
+
+    result = ''
 
     # Prepare command
     cmd = [proc]
@@ -79,10 +81,12 @@ def exec(proc, *args, shell = True, silent = False,  out_prefix = '', \
         else:
             result += '\n' + out_postfix
 
+    # Need a result?
     if (custom_out):
         return result
     else:
         return None
+
 # END
 
 #--------------------------------------------------------------------------
