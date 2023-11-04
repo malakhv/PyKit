@@ -31,8 +31,11 @@ The module to working with external processes.
 Author: Mikhail.Malakhov
 
 """
-import subprocess
-from subprocess import CalledProcessError
+
+__all__ = ['exec']
+
+import subprocess as _sp
+from subprocess import CalledProcessError as _cpe
 
 #--------------------------------------------------------------------------
 # Execute external process/command.
@@ -60,9 +63,9 @@ def exec(proc, *args, shell = True, silent = False,  out_prefix = '', \
 
     # Call
     try:
-        process = subprocess.run(cmd, shell = shell, check = True, \
+        process = _sp.run(cmd, shell = shell, check = True, \
             capture_output = custom_out, text = custom_out)
-    except CalledProcessError as e:
+    except _cpe as e:
         if (not custom_out):
             print(e.stderr)
         else:
