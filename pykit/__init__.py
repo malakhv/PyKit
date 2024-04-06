@@ -52,7 +52,7 @@ PYKIT_VERSION_MAJOR = 0
 PYKIT_VERSION_MINOR = 1
 
 """ The patch (ZZZ) version's part. Available values 0..999. """
-PYKIT_VERSION_PATCH = 2
+PYKIT_VERSION_PATCH = 3
 
 """ Gets PyKit library version code. """
 def pykit_version_code():

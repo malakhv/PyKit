@@ -36,7 +36,7 @@ def long_description():
 setup (
 
     name = "pykit",
-    version = "0.1.2",
+    version = "0.1.3",
 
     description="The common library for Python projects",
     long_description = long_description(),

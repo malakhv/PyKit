@@ -44,14 +44,22 @@ if __name__ == '__main__':
 
     # Process
     print()
-    #str = process.exec('git', 'status', out_prefix = '-----GIT STATUS -----', \
-    #    out_postfix = '---------------------', shell=False, \
-    #        out_keep_empty_lines=True)
-    #print(str)
+    out = process.exec('git', 'status', out_keep_empty_lines=True, silent=True)
+    if (out) : print(out)
 
     # Git
-    #git.git_status('.')
-    out = git.git_status('.', print_out=False)
-    print(out)
+    #print('-----------------------')
+    print('REPO: PyKit')
+    print('-----------------------')
+    out = git.git_status()
+    if (out) : print(out)
 
+    # Git
+    print()
+    print()
+    #print('-----------------------')
+    print('REPO: PascalKit')
+    print('-----------------------')
+    out = git.git_status()
+    if (out) : print(out)
 #-------------------------------------------------------------------------------

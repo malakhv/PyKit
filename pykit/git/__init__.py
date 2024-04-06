@@ -45,7 +45,7 @@ def git_for_path(git_cmd, *args, path = '.', compact_out = False, \
     if args : git_args.extend(args)
     out = _ps.exec('git', *git_args, silent=(not print_out), \
         out_keep_empty_lines= (not compact_out))
-    if print_out and (out != None): print(out)
+    if not print_out and (out != None): print(out)
 # END
 
 #-------------------------------------------------------------------------------
@@ -89,21 +89,24 @@ def git_clone(host, name, path = '.', print_out = True, \
 #-------------------------------------------------------------------------------
 
 """ Working with local Git config: set. """
-def git_config_set(path, name, value) :
+def git_config_set(name, value, path = '.', local = True) :
     if not name or not value :
         print("git_config_set - Illegal Arguments..."); return
-    config = ['config', '--local', name, value]
-    git_for_path(path, *config)
+    config = ['config']
+    if local : config.append('--local')
+    else : config.append('--global')
+    config.append(name, value)
+    git_for_path(path = path, *config)
 # END
 
 """ Working with local Git config: get. """
-def git_config_get(path, name = '') :
-    config = ['config', '--local']
-    if name :
-        config.extend(['--get', name])
-    else:
-        config.append('-l')
-    return git_for_path(path, *config)
+def git_config_get(name = '', path = '.', local = True) :
+    config = ['config']
+    if local : config.append('--local')
+    else : config.append('--global')
+    if name : config.append('--get', name)
+    else : config.append('-l')
+    return git_for_path(path = path, *config)
 # END
 
 #-------------------------------------------------------------------------------
